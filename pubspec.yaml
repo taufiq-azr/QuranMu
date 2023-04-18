@@ -1,0 +1,42 @@
+name: quran
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  http: 0.13.5
+  google_fonts: ^3.0.1
+  hexcolor: 3.0.1
+  flutter_svg: ^1.1.6
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: 2.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - lib/assets/logo_splash.png
+    - lib/assets/svgs/back-icon.svg
+    - lib/assets/svgs/bismillah.svg
+    - lib/assets/svgs/book.svg
+    - lib/assets/svgs/bookmark-icon.svg
+    - lib/assets/svgs/doa-icon.svg
+    - lib/assets/svgs/lamp-icon.svg
+    - lib/assets/svgs/menu-icon.svg
+    - lib/assets/svgs/nomor-surah.svg
+    - lib/assets/svgs/nomor-surah.png
+    - lib/assets/svgs/pray-icon.svg
+    - lib/assets/svgs/quran.svg
+    - lib/assets/svgs/quran-icon.svg
+    - lib/assets/svgs/search-icon.svg
+    - lib/assets/svgs/splash.svg
+
