@@ -2,25 +2,25 @@ name: quran
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
+environment:
   sdk: '>=2.19.2 <3.0.0'
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
-  get: 4.6.5
-  http: 0.13.5
-  google_fonts: ^3.0.1
-  hexcolor: 3.0.1
+  flutter:
+    sdk: flutter
+  flutter_screenutil: ^5.8.4
   flutter_svg: ^1.1.6
-  flutter: 
-    sdk: flutter
+  get: 4.6.5
+  hexcolor: 3.0.1
+  http: ^1.0.0
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: 2.0.1
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
 
   assets:
@@ -39,4 +39,11 @@ flutter:
     - lib/assets/svgs/quran-icon.svg
     - lib/assets/svgs/search-icon.svg
     - lib/assets/svgs/splash.svg
-
+    - lib/assets/logo_home.png
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: lib/assets/font/Poppins.ttf
+    - family: Inter
+      fonts:
+        - asset: lib/assets/font/Inter.ttf

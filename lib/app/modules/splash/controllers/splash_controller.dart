@@ -28,7 +28,7 @@ class SplashController extends GetxController
     );
 
     animationController.forward().whenComplete(() {
-      Get.offNamed(Routes.HOME);
+     // Get.offNamed(Routes.HOME);
     });
     super.onInit();
   }

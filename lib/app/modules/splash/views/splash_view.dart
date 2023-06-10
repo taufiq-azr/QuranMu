@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../utils/globals.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/splash_controller.dart';
 
@@ -13,50 +15,55 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-      // Get.offNamed(Routes.HOME);
+      Get.offNamed(Routes.HOME);
     });
 
     return Scaffold(
-      backgroundColor: background,
+      backgroundColor: MainBackground,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              flex: 2,
-              child: AnimatedBuilder(
-                animation: controller.animationController,
-                builder: (context, child) => Transform.translate(
-                  offset: Offset(0, controller.animation.value),
-                  child: child,
-                ),
-                child: Image.asset(
-                  'lib/assets/logo_splash.png',
-                  height: 500,
-                  width: 500,
-                ),
-              ),
+            Image.asset(
+              'lib/assets/logo_splash.png',
+              height: 391.h,
+              width: 341.w,
             ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Text(
-                    'Qur\'anKu',
-                    style: GoogleFonts.poppins(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: text),
-                  ),
-                ],
-              ),
+            SizedBox(
+              height: 5.h,
             ),
             Text(
-              'By Taufiq Al Azhar',
-              style: GoogleFonts.poppins(
-                  fontSize: 10,
-                  fontStyle: FontStyle.italic, fontWeight:FontWeight.bold,
-                  color: text),
+              'Qur\'anKu',
+              style: TextStyle(
+                  fontSize: 40.sp,
+                  fontWeight: FontWeight.bold,
+                  color: logo_text,
+                  fontFamily: 'Poppins'),
+            ),
+            SizedBox(height: 20.sp),
+            Text(
+              'Bacalah meskipun hanya ',
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  color: HexColor("FFFFFF"),
+                  fontFamily: 'Poppins'),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 10.sp),
+            Text(
+              'satu ayat',
+              style: TextStyle(
+                fontSize: 24.sp,
+                color: HexColor("FFFFFF"),
+                fontFamily: 'Poppins',
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            CircularProgressIndicator(
+              color: HexColor("FFFFFF"),
             ),
           ],
         ),

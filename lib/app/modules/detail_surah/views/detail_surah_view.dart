@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 import 'package:quran/app/data/models/Surah.dart';
 import 'package:quran/app/data/models/SurahDetail.dart' as detail;
@@ -17,74 +18,67 @@ class DetailSurahView extends GetView<DetailSurahController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: text,
-        automaticallyImplyLeading: false,
+        backgroundColor: appbar_text,
         elevation: 0,
         title: Row(children: [
-          IconButton(
-            onPressed: (() => {
-                  Get.offNamed(Routes.HOME),
-                }),
-            icon: Icon(Icons.arrow_back_ios, color: HexColor("#a19cc5")),
-          ),
-          const SizedBox(
-            width: 24,
-          ),
           Text(
             'Surah ${surah.name?.transliteration?.id}',
-            style: GoogleFonts.poppins(
-                fontSize: 20, fontWeight: FontWeight.bold, color: background),
+            style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+                color: SubBackground,
+                fontFamily: 'Poppins'),
           ),
         ]),
       ),
       body: ListView(
         children: [
           Card(
-            color: background,
+            color: SubBackground,
             elevation: 0,
             child: Column(children: [
               Text(
                 '${surah.name?.transliteration?.id}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontFamily: 'Poppins'),
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Text(
                 '( ${surah.name?.translation?.id} ) ',
-                style: const TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
+                style: TextStyle(
+                    fontSize: 19.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                    fontFamily: 'Poppins'),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               Text(
                 '${surah.numberOfVerses} Ayat | ${surah.revelation?.id}',
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                ),
+                style: TextStyle(
+                    fontSize: 15.sp,
+                    color: Colors.black,
+                    fontFamily: 'Poppins'),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
             ]),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           FutureBuilder<detail.SurahDetail>(
               future: controller.getDetailSurah(surah.number.toString()),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
+                  return Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (snapshot.hasError) {
@@ -92,22 +86,19 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     child: Text("Failed to load data: ${snapshot.error}"),
                   );
                 } else if (!snapshot.hasData) {
-                  return const Center(
+                  return Center(
                     child: Text("Tidak Ada Data !"),
                   );
                 } else {
                   return SizedBox(
-                    height: MediaQuery.of(context).size.width <
-                            MediaQuery.of(context).size.height
-                        ? MediaQuery.of(context).size.height * 0.75
-                        : MediaQuery.of(context).size.height * 0.8,
+                    height: 480.h,
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: snapshot.data?.verses.length ?? 0,
                       itemBuilder: (context, index) {
                         // ignore: prefer_is_empty
                         if (snapshot.data?.verses.length == 0) {
-                          return const SizedBox();
+                          return SizedBox();
                         }
                         detail.Verse? ayat = snapshot.data?.verses[index];
                         return Column(
@@ -118,18 +109,18 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               color:
                                   Theme.of(context).colorScheme.surfaceVariant,
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 5,
-                                  horizontal: 10,
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 5.r,
+                                  horizontal: 10.r,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: const BoxDecoration(
+                                      height: 50.h,
+                                      width: 50.w,
+                                      decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 "lib/assets/svgs/nomor-surah.png")),
@@ -138,9 +129,9 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                         child: Text(
                                           "${index + 1}",
                                           textAlign: TextAlign.center,
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                          ),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'Poppins'),
                                         ),
                                       ),
                                     ),
@@ -148,49 +139,54 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: 10.h,
                             ),
                             Container(
-                              padding:
-                                  const EdgeInsets.only(right: 15, left: 15),
+                              padding: EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.arab}',
                                 textAlign: TextAlign.end,
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                ),
+                                style: TextStyle(
+                                    fontSize: 25.sp,
+                                    color: HexColor("004B40"),
+                                    fontFamily: 'Poppins'),
                               ),
                             ),
-                            const SizedBox(
-                              height: 5,
+                            SizedBox(
+                              height: 5.h,
                             ),
                             Container(
-                              padding:
-                                  const EdgeInsets.only(right: 15, left: 15),
+                              padding: EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.transliteration?.en}',
                                 textAlign: TextAlign.end,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontStyle: FontStyle.italic,
-                                ),
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontStyle: FontStyle.italic,
+                                    color: HexColor("004B40"),
+                                    fontFamily: 'Poppins'),
                               ),
                             ),
-                            const SizedBox(
-                              height: 20,
+                            SizedBox(
+                              height: 20.h,
                             ),
                             Container(
-                              padding: const EdgeInsets.only(
-                                  right: 15, left: 15, bottom: 15),
+                              padding: EdgeInsets.only(
+                                      right: 15, left: 15, bottom: 15)
+                                  .r,
                               child: Text(
                                 '${ayat?.translation?.id}',
                                 textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                ),
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: HexColor("076C58"),
+                                    fontFamily: 'Poppins'),
                               ),
                             ),
+                            SizedBox(
+                              height: 30.h,
+                            )
                           ],
                         );
                       },

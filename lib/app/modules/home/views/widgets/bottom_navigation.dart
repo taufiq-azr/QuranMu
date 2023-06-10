@@ -24,7 +24,7 @@ class BottomNavigationApp extends StatelessWidget {
         child: IndexedStack(
           index: bottomNavigationController.selectedPage.value,
           children: [
-            const HomeView(),
+            HomeView(),
              Container(height: 300),
             //PrayerPage(),
             //DoaPage(),
