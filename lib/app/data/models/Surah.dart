@@ -29,9 +29,11 @@ class Surah {
         number: json?["number"],
         sequence: json?["sequence"],
         numberOfVerses: json?["numberOfVerses"],
-        name: Name.fromJson(json?["name"]),
-        revelation: Revelation.fromJson(json?["revelation"]),
-        tafsir: Tafsir.fromJson(json?["tafsir"]),
+        name: json?["name"] != null ? Name.fromJson(json?["name"]) : null,
+        revelation: json?["revelation"] != null
+            ? Revelation.fromJson(json?["revelation"])
+            : null,
+        tafsir: json?["tafsir"] != null ? Tafsir.fromJson(json?["tafsir"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
