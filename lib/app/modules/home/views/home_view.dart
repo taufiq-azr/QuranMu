@@ -6,29 +6,18 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:quran/app/routes/app_pages.dart';
 import '../../../data/models/Surah.dart';
 import '../../utils/globals.dart';
+import '../../utils/widget_reuse/appbarWidget.dart';
+import '../../utils/widget_reuse/bottom_navigator.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
-  @override
+
   Widget build(BuildContext context) {
     Get.put(HomeController());
     return Scaffold(
       backgroundColor: subBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: subBackgroundColor,
-        elevation: 0,
-        title: Row(children: [
-          Text(
-            'Qur\'anKu',
-            style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: appbar,
-                fontFamily: 'Poppins'),
-          ),
-        ]),
-      ),
+      appBar: appBar,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -36,6 +25,19 @@ class HomeView extends GetView<HomeController> {
               Image.asset(
                 'lib/assets/logo_home.png',
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 20.w),
+                  Text('Daftar Surah',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 20.sp,
+                          color: const Color(0xFF121931))),
+                ],
+              ),
+              SizedBox(height: 5.h),
               FutureBuilder<List<Surah>>(
                 future: controller.getAllSurah(),
                 builder: (context, snapshot) {
@@ -109,6 +111,10 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
+      bottomNavigationBar:
+          buildBottomNavigationBar(controller.selectedIndex, (index) {
+        controller.onItemTapped(index);
+      }),
     );
   }
 }

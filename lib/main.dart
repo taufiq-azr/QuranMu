@@ -12,6 +12,8 @@ void main() {
     splitScreenMode: true,
     builder: (context, child) {
       return GetMaterialApp(
+        defaultTransition: Transition.noTransition,
+        transitionDuration: const Duration(seconds: 0),
         title: "Application",
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
