@@ -7,7 +7,7 @@ void main() {
   group('Surah Model Test', () {
     test('Parse Surah JSON', () {
       // Sample JSON data for Surah
-      final jsonString = '''
+      const jsonString = '''
         {
           "number": 1,
       "sequence": 5,

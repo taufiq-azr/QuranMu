@@ -14,9 +14,9 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     Get.put(HomeController());
     return Scaffold(
-      backgroundColor: SubBackground,
+      backgroundColor: subBackgroundColor,
       appBar: AppBar(
-        backgroundColor: SubBackground,
+        backgroundColor: subBackgroundColor,
         elevation: 0,
         title: Row(children: [
           Text(
@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
             style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
-                color: appbar_text,
+                color: appbar,
                 fontFamily: 'Poppins'),
           ),
         ]),
@@ -40,7 +40,7 @@ class HomeView extends GetView<HomeController> {
                 future: controller.getAllSurah(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (snapshot.hasError) {
@@ -62,7 +62,7 @@ class HomeView extends GetView<HomeController> {
                             leading: Container(
                               height: 60.h,
                               width: 40.w,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         "lib/assets/svgs/nomor-surah.png")),
@@ -81,7 +81,7 @@ class HomeView extends GetView<HomeController> {
                             title: Text(
                               "${surah.name!.transliteration?.id}",
                               style: TextStyle(
-                                  color: Color(0xFF121931),
+                                  color: const Color(0xFF121931),
                                   fontSize: 15.sp,
                                   fontFamily: 'Poppins'),
                             ),

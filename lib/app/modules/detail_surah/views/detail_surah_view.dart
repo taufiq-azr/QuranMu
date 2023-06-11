@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:quran/app/data/models/Surah.dart';
 import 'package:quran/app/data/models/SurahDetail.dart' as detail;
-import 'package:quran/app/routes/app_pages.dart';
-
 import '../../utils/globals.dart';
 import '../controllers/detail_surah_controller.dart';
 
@@ -18,7 +16,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: appbar_text,
+        backgroundColor: appbar,
         elevation: 0,
         title: Row(children: [
           Text(
@@ -26,7 +24,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
             style: TextStyle(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
-                color: SubBackground,
+                color: subBackgroundColor,
                 fontFamily: 'Poppins'),
           ),
         ]),
@@ -34,7 +32,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
       body: ListView(
         children: [
           Card(
-            color: SubBackground,
+            color: subBackgroundColor,
             elevation: 0,
             child: Column(children: [
               Text(
@@ -78,7 +76,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
               future: controller.getDetailSurah(surah.number.toString()),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (snapshot.hasError) {
@@ -86,7 +84,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     child: Text("Failed to load data: ${snapshot.error}"),
                   );
                 } else if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: Text("Tidak Ada Data !"),
                   );
                 } else {
@@ -98,7 +96,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       itemBuilder: (context, index) {
                         // ignore: prefer_is_empty
                         if (snapshot.data?.verses.length == 0) {
-                          return SizedBox();
+                          return const SizedBox();
                         }
                         detail.Verse? ayat = snapshot.data?.verses[index];
                         return Column(
@@ -120,7 +118,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                     Container(
                                       height: 50.h,
                                       width: 50.w,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 "lib/assets/svgs/nomor-surah.png")),
@@ -129,7 +127,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                         child: Text(
                                           "${index + 1}",
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.white,
                                               fontFamily: 'Poppins'),
                                         ),
@@ -143,7 +141,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               height: 10.h,
                             ),
                             Container(
-                              padding: EdgeInsets.only(right: 15, left: 15).r,
+                              padding: const EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.arab}',
                                 textAlign: TextAlign.end,
@@ -157,7 +155,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               height: 5.h,
                             ),
                             Container(
-                              padding: EdgeInsets.only(right: 15, left: 15).r,
+                              padding: const EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.transliteration?.en}',
                                 textAlign: TextAlign.end,
@@ -172,7 +170,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               height: 20.h,
                             ),
                             Container(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                       right: 15, left: 15, bottom: 15)
                                   .r,
                               child: Text(
