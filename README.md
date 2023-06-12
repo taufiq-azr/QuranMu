@@ -28,5 +28,5 @@ API Used: https://api.quran.gading.dev/
 
 ## Authors
 
-- [@octokatherine](https://github.com/taufiq-azr)
+- [@taufiq-azr](https://github.com/taufiq-azr)
 
