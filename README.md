@@ -20,8 +20,7 @@ API Used: https://api.quran.gading.dev/
 ## Screenshots
 
 ![App Screenshot](screenshots/ss1.png){:width="180px"}
-![App Screenshot](screenshots/ss2.png){:width="180px"}
-![App Screenshot](screenshots/ss3.png){:width="180px"}
+
 
 
 
