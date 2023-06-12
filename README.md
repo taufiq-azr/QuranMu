@@ -9,7 +9,7 @@ The Qur'anku App is a software designed to facilitate users in reading, memorizi
 Install quran with flutter
 
 ```bash
-git clone https://github.com/taufiq-azr/quran.git
+git clone https://github.com/taufiq-azr/quranku.git
 cd quran
 flutter pub get
 flutter run
