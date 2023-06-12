@@ -16,9 +16,9 @@ flutter pub get
     
 ## Screenshots
 
-![App Screenshot](screenshots/ss1.png){:width="50%"}{:width="50%"}
-![App Screenshot](screenshots/ss2.png){:width="50%"}{:width="50%"}
-![App Screenshot](screenshots/ss3.png){:width="50%"}{:width="50%"}
+![App Screenshot](screenshots/ss1.png){:width="50%"}{:width="300px"}
+![App Screenshot](screenshots/ss2.png){:width="50%"}{:width="300px"}
+![App Screenshot](screenshots/ss3.png){:width="50%"}{:width="300px"}
 
 
 ## Authors
