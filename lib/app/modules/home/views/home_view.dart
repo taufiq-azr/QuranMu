@@ -63,7 +63,7 @@ class HomeView extends GetView<HomeController> {
                             },
                             leading: Container(
                               height: 60.h,
-                              width: 40.w,
+                              width: 60.w,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(

@@ -1,27 +1,22 @@
-import 'package:get/get.dart';
+import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:quran/app/data/models/Doa.dart';
+import 'package:http/http.dart' as http;
 import '../../../routes/app_pages.dart';
 
 class DoaController extends GetxController {
-  //TODO: Implement DoaController
+Future<List<Doa>> getAllDoa() async {
+    Uri url = Uri.parse("https://doa-doa-api-ahmadramadhan.fly.dev/api");
+    var res = await http.get(url);
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+    List<dynamic> responseData = json.decode(res.body);
+    if (responseData == null || responseData.isEmpty) {
+      return [];
+    } else {
+      return responseData.map((e) => Doa.fromJson(e)).toList();
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 
   int selectedIndex = 1;
   void onItemTapped(int index) {

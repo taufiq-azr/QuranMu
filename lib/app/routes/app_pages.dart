@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/detailDoa/bindings/detail_doa_binding.dart';
+import '../modules/detailDoa/views/detail_doa_view.dart';
 import '../modules/detail_surah/bindings/detail_surah_binding.dart';
 import '../modules/detail_surah/views/detail_surah_view.dart';
 import '../modules/doa/bindings/doa_binding.dart';
@@ -45,6 +47,11 @@ class AppPages {
       name: _Paths.LISTENING,
       page: () => const ListeningView(),
       binding: ListeningBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_DOA,
+      page: () => DetailDoaView(),
+      binding: DetailDoaBinding(),
     ),
   ];
 }
