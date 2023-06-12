@@ -21,7 +21,7 @@ API Used: https://api.quran.gading.dev/
     
 ## Screenshots
 
-![App Screenshot](screenshots/ss1.png){:width="180px"}
+![App Screenshot](screenshots/ss1.png)
 
 
 
