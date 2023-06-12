@@ -17,7 +17,9 @@ flutter run
 
 ## 🔗 API Information
 
-API Used: https://api.quran.gading.dev/
+API Used: 
+- https://api.quran.gading.dev/
+- https://doa-doa-api-ahmadramadhan.fly.dev/api
     
 ## Screenshots
 
