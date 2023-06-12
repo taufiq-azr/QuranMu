@@ -10,7 +10,9 @@ Install quran with flutter
 
 ```bash
 git clone https://github.com/taufiq-azr/quran.git
+cd quran
 flutter pub get
+flutter run
 ```
 
 ## 🔗 API Information
