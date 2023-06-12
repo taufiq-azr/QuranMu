@@ -1,16 +1,27 @@
-# quran
 
-A new Flutter project.
+# Qur'anku App
 
-## Getting Started
+The Qur'anku App is a software designed to facilitate users in reading, memorizing, and studying the Quran, the holy book of Islam. This application is available on mobile platforms such as smartphones and tablets.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Install quran with flutter
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/taufiq-azr/quran.git
+flutter pub get
+```
+
+    
+## Screenshots
+
+![App Screenshot](screenshots/ss1.png)
+![App Screenshot](screenshots/ss2.png)
+![App Screenshot](screenshots/ss3.png)
+
+
+## Authors
+
+- [@octokatherine](https://github.com/taufiq-azr)
+

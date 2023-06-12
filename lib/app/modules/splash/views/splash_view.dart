@@ -15,7 +15,7 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-       Get.offNamed(Routes.HOME);
+      Get.offNamed(Routes.HOME);
     });
 
     return Scaffold(
