@@ -30,3 +30,6 @@ API Used: https://api.quran.gading.dev/
 
 - [@taufiq-azr](https://github.com/taufiq-azr)
 
+If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of ☕
+
+- [@paypal](https://www.paypal.com/paypalme/taufiqalazhar)
