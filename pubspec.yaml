@@ -14,7 +14,7 @@ dependencies:
   get: 4.6.5
   hexcolor: 3.0.1
   http: ^1.0.0
-  
+  lottie: ^2.4.0
 
 dev_dependencies:
   flutter_lints: 2.0.1
@@ -44,6 +44,9 @@ flutter:
     - lib/assets/home_icon.png
     - lib/assets/doa_icon.png
     - lib/assets/sound_icon.png
+    - lib/assets/bismillahPng.png
+    - lib/assets/pray.json
+    - lib/assets/bismillahAnim.json
   fonts:
     - family: Poppins
       fonts:
