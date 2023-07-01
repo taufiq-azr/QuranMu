@@ -11,6 +11,7 @@ Install quran with flutter
 ```bash
 git clone https://github.com/taufiq-azr/quranku.git
 cd quranku
+flutter clean
 flutter pub get
 flutter run
 ```
