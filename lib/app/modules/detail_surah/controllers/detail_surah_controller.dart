@@ -13,6 +13,11 @@ class DetailSurahController extends GetxController {
         (json.decode(res.body) as Map<String, dynamic>)["data"];
 
     return SurahDetail.fromJson(data);
-   
+  }
+
+  RxBool isVisible = false.obs;
+
+  void toggleContainer() {
+    isVisible.toggle();
   }
 }

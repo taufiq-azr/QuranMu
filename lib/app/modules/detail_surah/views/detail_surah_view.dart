@@ -13,6 +13,9 @@ class DetailSurahView extends GetView<DetailSurahController> {
   DetailSurahView({Key? key}) : super(key: key);
   final Surah surah = Get.arguments;
   @override
+  final DetailSurahController controller = Get.put(DetailSurahController());
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -141,7 +144,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               height: 10.h,
                             ),
                             Container(
-                              padding: const EdgeInsets.only(right: 15, left: 15).r,
+                              padding:
+                                  const EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.arab}',
                                 textAlign: TextAlign.end,
@@ -155,7 +159,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               height: 5.h,
                             ),
                             Container(
-                              padding: const EdgeInsets.only(right: 15, left: 15).r,
+                              padding:
+                                  const EdgeInsets.only(right: 15, left: 15).r,
                               child: Text(
                                 '${ayat?.text?.transliteration?.en}',
                                 textAlign: TextAlign.end,
@@ -181,6 +186,66 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                     color: HexColor("076C58"),
                                     fontFamily: 'Poppins'),
                               ),
+                            ),
+                            SizedBox(
+                              height: 20.5,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    controller.toggleContainer();
+                                  },
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 5.0).r,
+                                    alignment: Alignment.centerLeft,
+                                    padding: EdgeInsets.all(12.0).r,
+                                    decoration: BoxDecoration(
+                                      color: appbar,
+                                      borderRadius:
+                                          BorderRadius.circular(8.0).r,
+                                    ),
+                                    child: Obx(() => Text(
+                                          controller.isVisible.value
+                                              ? 'Tekan untuk Tutup Tafsir'
+                                              : 'Tekan untuk Tampilkan Tafsir',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                  ),
+                                ),
+                                SizedBox(height: 16.0),
+                                Obx(() {
+                                  return Visibility(
+                                    visible: controller.isVisible.value,
+                                    child: Container(
+                                      padding: EdgeInsets.all(12.0),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.green)),
+                                        padding: const EdgeInsets.only(
+                                                right: 15, left: 15, bottom: 15)
+                                            .r,
+                                        child: Text(
+                                          '${ayat?.tafsir?.id.long}',
+                                          textAlign: TextAlign.justify,
+                                          style: TextStyle(
+                                              fontSize: 14.sp,
+                                              color: HexColor("076C58"),
+                                              fontFamily: 'Poppins'),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                              ],
                             ),
                             SizedBox(
                               height: 30.h,
