@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             children: [
               Image.asset(
-                'lib/assets/logo_home.png',
+              'lib/assets/logo_home.png',
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

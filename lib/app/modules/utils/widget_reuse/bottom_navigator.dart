@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-
-    BottomNavigationBar buildBottomNavigationBar(int selectedIndex, void Function(int) onItemTapped) {
+BottomNavigationBar buildBottomNavigationBar(
+    int selectedIndex, void Function(int) onItemTapped) {
   return BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
         label: 'Doa',
       ),
       BottomNavigationBarItem(
-        icon: ImageIcon(AssetImage('lib/assets/sound_icon.png')),
-        label: 'Listening',
+        icon: ImageIcon(AssetImage('lib/assets/compass.png')),
+        label: 'Compass',
       ),
     ],
     currentIndex: selectedIndex,

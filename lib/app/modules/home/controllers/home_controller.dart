@@ -35,7 +35,7 @@ class HomeController extends GetxController {
         break;
       case 2:
         // Navigasi ke halaman Listening
-        Get.offAllNamed(Routes.LISTENING);
+        Get.offAllNamed(Routes.COMPASS);
         break;
       default:
         // Tindakan default jika indeks tidak sesuai

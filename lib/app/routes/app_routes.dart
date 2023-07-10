@@ -9,6 +9,7 @@ abstract class Routes {
   static const DOA = _Paths.DOA;
   static const LISTENING = _Paths.LISTENING;
   static const DETAIL_DOA = _Paths.DETAIL_DOA;
+  static const COMPASS = _Paths.COMPASS;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const DOA = '/doa';
   static const LISTENING = '/listening';
   static const DETAIL_DOA = '/detail-doa';
+  static const COMPASS = '/compass';
 }

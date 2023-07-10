@@ -15,9 +15,17 @@ class DetailSurahController extends GetxController {
     return SurahDetail.fromJson(data);
   }
 
-  RxBool isVisible = false.obs;
+  RxInt visibleIndex = RxInt(-1);
 
-  void toggleContainer() {
-    isVisible.toggle();
+  void toggleContainer(int index) {
+    if (visibleIndex.value == index) {
+      visibleIndex.value = -1;
+    } else {
+      visibleIndex.value = index;
+    }
+  }
+
+  bool isVisible(int index) {
+    return visibleIndex.value == index;
   }
 }

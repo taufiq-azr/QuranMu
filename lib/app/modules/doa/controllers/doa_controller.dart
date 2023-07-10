@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../../../routes/app_pages.dart';
 
 class DoaController extends GetxController {
-Future<List<Doa>> getAllDoa() async {
+  Future<List<Doa>> getAllDoa() async {
     Uri url = Uri.parse("https://doa-doa-api-ahmadramadhan.fly.dev/api");
     var res = await http.get(url);
 
@@ -33,7 +33,7 @@ Future<List<Doa>> getAllDoa() async {
         break;
       case 2:
         // Navigasi ke halaman Listening
-        Get.offAllNamed(Routes.LISTENING);
+        Get.offAllNamed(Routes.COMPASS);
         break;
       default:
         // Tindakan default jika indeks tidak sesuai

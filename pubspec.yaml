@@ -9,12 +9,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_compass: ^0.7.0
   flutter_screenutil: ^5.8.4
   flutter_svg: ^1.1.6
   get: 4.6.5
   hexcolor: 3.0.1
   http: ^1.0.0
   lottie: ^2.4.0
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_lints: 2.0.1
@@ -47,6 +49,7 @@ flutter:
     - lib/assets/bismillahPng.png
     - lib/assets/pray.json
     - lib/assets/bismillahAnim.json
+    - lib/assets/compass.png
   fonts:
     - family: Poppins
       fonts:

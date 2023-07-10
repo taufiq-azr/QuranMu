@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new RuntimeException("SDK Flutter tidak ditemukan. Tentukan lokasi dengan flutter.sdk dalam file local.properties.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -43,11 +43,11 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // TODO: Tentukan ID Aplikasi unik Anda sendiri (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.azharproject.quran"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        // Anda dapat memperbarui nilai-nilai berikut sesuai kebutuhan aplikasi Anda.
+        // Untuk informasi lebih lanjut, lihat: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -55,8 +55,8 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // TODO: Tambahkan konfigurasi signing Anda sendiri untuk build rilis.
+            // Saat ini menggunakan debug keys agar `flutter run --release` berfungsi.
             signingConfig signingConfigs.debug
         }
     }

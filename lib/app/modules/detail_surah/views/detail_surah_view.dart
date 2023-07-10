@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:quran/app/data/models/Surah.dart';
 import 'package:quran/app/data/models/SurahDetail.dart' as detail;
+import 'package:quran/app/modules/detail_surah/controllers/verse_visibility_provider.dart';
 import '../../utils/globals.dart';
 import '../controllers/detail_surah_controller.dart';
 
@@ -14,7 +15,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
   final Surah surah = Get.arguments;
   @override
   final DetailSurahController controller = Get.put(DetailSurahController());
-
+  final VerseVisibilityProvider visibleController =
+      Get.put(VerseVisibilityProvider());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,7 +197,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    controller.toggleContainer();
+                                    controller.toggleContainer(index);
                                   },
                                   child: Container(
                                     margin:
@@ -208,19 +210,19 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                           BorderRadius.circular(8.0).r,
                                     ),
                                     child: Obx(() => Text(
-                                          controller.isVisible.value
+                                          controller.isVisible(index)
                                               ? 'Tekan untuk Tutup Tafsir'
                                               : 'Tekan untuk Tampilkan Tafsir',
                                           style: TextStyle(color: Colors.white),
                                         )),
                                   ),
                                 ),
-                                SizedBox(height: 16.0),
+                                SizedBox(height: 16.0.h),
                                 Obx(() {
                                   return Visibility(
-                                    visible: controller.isVisible.value,
+                                    visible: controller.isVisible(index),
                                     child: Container(
-                                      padding: EdgeInsets.all(12.0),
+                                      padding: EdgeInsets.all(12.0).r,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius:
