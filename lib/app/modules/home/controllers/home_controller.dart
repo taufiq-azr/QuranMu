@@ -5,9 +5,18 @@ import 'package:http/http.dart' as http;
 
 import '../../../data/models/Surah.dart';
 import '../../../routes/app_pages.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class HomeController extends GetxController {
   Future<List<Surah>> getAllSurah() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.none) {
+      // Tidak ada koneksi internet, tampilkan pesan peringatan di sini.
+      print("Tidak ada koneksi internet");
+      return [];
+    }
+
     Uri url = Uri.parse("https://api.quran.gading.dev/surah");
     var res = await http.get(url);
 
@@ -32,10 +41,6 @@ class HomeController extends GetxController {
       case 1:
         // Navigasi ke halaman Doa
         Get.offAllNamed(Routes.DOA);
-        break;
-      case 2:
-        // Navigasi ke halaman Listening
-        Get.offAllNamed(Routes.COMPASS);
         break;
       default:
         // Tindakan default jika indeks tidak sesuai

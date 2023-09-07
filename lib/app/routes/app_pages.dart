@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-import '../modules/compass/bindings/compass_binding.dart';
-import '../modules/compass/views/compass_view.dart';
+
 import '../modules/detailDoa/bindings/detail_doa_binding.dart';
 import '../modules/detailDoa/views/detail_doa_view.dart';
 import '../modules/detail_surah/bindings/detail_surah_binding.dart';
@@ -48,10 +47,6 @@ class AppPages {
       page: () => DetailDoaView(),
       binding: DetailDoaBinding(),
     ),
-    GetPage(
-      name: _Paths.COMPASS,
-      page: () => const CompassView(),
-      binding: CompassBinding(),
-    ),
+    
   ];
 }

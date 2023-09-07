@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:quran/app/data/models/Doa.dart';
 import 'package:http/http.dart' as http;
@@ -7,6 +7,13 @@ import '../../../routes/app_pages.dart';
 
 class DoaController extends GetxController {
   Future<List<Doa>> getAllDoa() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.none) {
+      // Tidak ada koneksi internet, tampilkan pesan peringatan di sini.
+      print("Tidak ada koneksi internet");
+      return [];
+    }
     Uri url = Uri.parse("https://doa-doa-api-ahmadramadhan.fly.dev/api");
     var res = await http.get(url);
 

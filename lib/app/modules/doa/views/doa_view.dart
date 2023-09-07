@@ -50,47 +50,58 @@ class DoaView extends GetView<DoaController> {
                       child: Text("Failed to load data: ${snapshot.error}"),
                     );
                   } else {
-                    // Menampilkan daftar surah jika data berhasil diambil
-                    return Expanded(
-                      child: ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          Doa doa = snapshot.data![index];
-                          return ListTile(
-                            onTap: () {
-                              Get.toNamed(Routes.DETAIL_DOA,
-                                  arguments: doa);
-                            },
-                            leading: Container(
-                              height: 60.h,
-                              width: 40.w,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "lib/assets/svgs/nomor-surah.png")),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "${doa.id}",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: HexColor("FFFFFF"),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Poppins'),
+                    if (snapshot.data!.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "Tidak ada koneksi internet",
+                          style: TextStyle(
+                              color: const Color(0xFF121931),
+                              fontSize: 15.sp,
+                              fontFamily: 'Poppins'),
+                        ),
+                      );
+                    } else {
+                      // Menampilkan daftar surah jika data berhasil diambil
+                      return Expanded(
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            Doa doa = snapshot.data![index];
+                            return ListTile(
+                              onTap: () {
+                                Get.toNamed(Routes.DETAIL_DOA, arguments: doa);
+                              },
+                              leading: Container(
+                                height: 60.h,
+                                width: 40.w,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "lib/assets/svgs/nomor-surah.png")),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "${doa.id}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: HexColor("FFFFFF"),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Poppins'),
+                                  ),
                                 ),
                               ),
-                            ),
-                            title: Text(
-                              "${doa.doa}",
-                              style: TextStyle(
-                                  color: const Color(0xFF121931),
-                                  fontSize: 15.sp,
-                                  fontFamily: 'Poppins'),
-                            ),
-                          );
-                        },
-                      ),
-                    );
+                              title: Text(
+                                "${doa.doa}",
+                                style: TextStyle(
+                                    color: const Color(0xFF121931),
+                                    fontSize: 15.sp,
+                                    fontFamily: 'Poppins'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    }
                   }
                 },
               ),

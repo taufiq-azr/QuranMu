@@ -12,10 +12,6 @@ BottomNavigationBar buildBottomNavigationBar(
         icon: ImageIcon(AssetImage('lib/assets/doa_icon.png')),
         label: 'Doa',
       ),
-      BottomNavigationBarItem(
-        icon: ImageIcon(AssetImage('lib/assets/compass.png')),
-        label: 'Compass',
-      ),
     ],
     currentIndex: selectedIndex,
     onTap: onItemTapped,

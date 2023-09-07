@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:quran/app/data/models/Surah.dart';
 import 'package:quran/app/data/models/SurahDetail.dart' as detail;
-import 'package:quran/app/modules/detail_surah/controllers/verse_visibility_provider.dart';
 import '../../utils/globals.dart';
 import '../controllers/detail_surah_controller.dart';
 
@@ -15,8 +14,6 @@ class DetailSurahView extends GetView<DetailSurahController> {
   final Surah surah = Get.arguments;
   @override
   final DetailSurahController controller = Get.put(DetailSurahController());
-  final VerseVisibilityProvider visibleController =
-      Get.put(VerseVisibilityProvider());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,7 +187,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               ),
                             ),
                             SizedBox(
-                              height: 20.5,
+                              height: 20.5.h,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,

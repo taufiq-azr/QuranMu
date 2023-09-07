@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.19.2 <3.0.0'
 
 dependencies:
+  connectivity_plus: ^4.0.2
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter

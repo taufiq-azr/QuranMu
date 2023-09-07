@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             children: [
               Image.asset(
-              'lib/assets/logo_home.png',
+                'lib/assets/logo_home.png',
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -50,60 +50,73 @@ class HomeView extends GetView<HomeController> {
                       child: Text("Failed to load data: ${snapshot.error}"),
                     );
                   } else {
-                    // Menampilkan daftar surah jika data berhasil diambil
-                    return Expanded(
-                      child: ListView.builder(
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          Surah surah = snapshot.data![index];
-                          return ListTile(
-                            onTap: () {
-                              Get.toNamed(Routes.DETAIL_SURAH,
-                                  arguments: surah);
-                            },
-                            leading: Container(
-                              height: 60.h,
-                              width: 60.w,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "lib/assets/svgs/nomor-surah.png")),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "${surah.number}",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: HexColor("FFFFFF"),
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Poppins'),
+                    if (snapshot.data!.isEmpty) {
+                      return Center(
+                        
+                        child: Text(
+                          "Tidak ada koneksi internet",
+                          style: TextStyle(
+                              color: const Color(0xFF121931),
+                              fontSize: 15.sp,
+                              fontFamily: 'Poppins'),
+                        ),
+                      );
+                    } else {
+                      // Menampilkan daftar surah jika data berhasil diambil
+                      return Expanded(
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            Surah surah = snapshot.data![index];
+                            return ListTile(
+                              onTap: () {
+                                Get.toNamed(Routes.DETAIL_SURAH,
+                                    arguments: surah);
+                              },
+                              leading: Container(
+                                height: 60.h,
+                                width: 60.w,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          "lib/assets/svgs/nomor-surah.png")),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "${surah.number}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: HexColor("FFFFFF"),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Poppins'),
+                                  ),
                                 ),
                               ),
-                            ),
-                            title: Text(
-                              "${surah.name!.transliteration?.id}",
-                              style: TextStyle(
-                                  color: const Color(0xFF121931),
-                                  fontSize: 15.sp,
-                                  fontFamily: 'Poppins'),
-                            ),
-                            subtitle: Text(
-                              "${surah.numberOfVerses ?? 0} | ${surah.revelation?.id ?? ""}",
-                              style: TextStyle(
-                                  color: HexColor("858585"),
-                                  fontFamily: 'Poppins'),
-                            ),
-                            trailing: Text(
-                              surah.name!.short ?? "",
-                              style: TextStyle(
-                                  color: HexColor("076C58"),
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins'),
-                            ),
-                          );
-                        },
-                      ),
-                    );
+                              title: Text(
+                                "${surah.name!.transliteration?.id}",
+                                style: TextStyle(
+                                    color: const Color(0xFF121931),
+                                    fontSize: 15.sp,
+                                    fontFamily: 'Poppins'),
+                              ),
+                              subtitle: Text(
+                                "${surah.numberOfVerses ?? 0} | ${surah.revelation?.id ?? ""}",
+                                style: TextStyle(
+                                    color: HexColor("858585"),
+                                    fontFamily: 'Poppins'),
+                              ),
+                              trailing: Text(
+                                surah.name!.short ?? "",
+                                style: TextStyle(
+                                    color: HexColor("076C58"),
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    }
                   }
                 },
               ),
