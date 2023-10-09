@@ -41,6 +41,9 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/development'
         run: |
           # Add your deployment script or commands for staging here
+          # Build and run on an emulator or simulator
+          flutter build apk
+          flutter run
 
   deploy_production:
     runs-on: ubuntu-latest
