@@ -50,7 +50,7 @@ jobs:
           flutter build apk
 
           # Upload the APK to Firebase Test Lab for testing
-          gcloud auth activate-service-account --key-file=/path/to/your/service-account-key.json
+          gcloud auth activate-service-account --key-file=/Firebase/service-account-key.json
           gcloud firebase test android run \
             --type instrumentation \
             --app build/app/outputs/flutter-apk/app-release.apk \
