@@ -40,10 +40,22 @@ jobs:
       - name: Deploy to Staging
         if: github.event_name == 'push' && github.ref == 'refs/heads/development'
         run: |
-          # Add your deployment script or commands for staging here
-          # Build and run on an emulator or simulator
+          # Add the following dependencies:
+          - name: Google Cloud SDK
+            uses: google-github-actions/setup-gcloud@v0
+          - name: Firebase Admin SDK
+            run: npm install -g firebase-admin
+
+          # Build the APK
           flutter build apk
-          flutter run
+
+          # Upload the APK to Firebase Test Lab for testing
+          gcloud auth activate-service-account --key-file=/path/to/your/service-account-key.json
+          gcloud firebase test android run \
+            --type instrumentation \
+            --app build/app/outputs/flutter-apk/app-release.apk \
+            --test build/app/outputs/flutter-apk/app.apk \
+            --timeout 5m
 
   deploy_production:
     runs-on: ubuntu-latest
@@ -63,4 +75,3 @@ jobs:
 
           # Deploy
           fastlane deploy
-
