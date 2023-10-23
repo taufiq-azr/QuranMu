@@ -43,6 +43,9 @@ jobs:
           # Add the following dependencies:
           - name: Google Cloud SDK
             uses: google-github-actions/setup-gcloud@v0
+            with:
+              project_id: ${{ secrets.FIREBASE_API_KEY }}
+              service_account_key: ${{ secrets.FIREBASE_API_KEY }}
           - name: Firebase Admin SDK
             run: npm install -g firebase-admin
 
@@ -50,7 +53,7 @@ jobs:
           flutter build apk
 
           # Upload the APK to Firebase Test Lab for testing
-          gcloud auth activate-service-account --key-file=/Firebase/service-account-key.json
+          gcloud auth activate-service-account --key-file=${{ secrets.FIREBASE_API_KEY }}
           gcloud firebase test android run \
             --type instrumentation \
             --app build/app/outputs/flutter-apk/app-release.apk \
@@ -75,3 +78,4 @@ jobs:
 
           # Deploy
           fastlane deploy
+
