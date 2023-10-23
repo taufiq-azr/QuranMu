@@ -37,20 +37,22 @@ jobs:
       runs-on: ubuntu-latest
       needs: build
       steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
         - name: Set up Google Cloud SDK
           uses: google-github-actions/setup-gcloud@v0
           with:
             project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
             service_account_key: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
-    
+      
         - name: Authenticate with Firebase
           uses: google-github-actions/auth@v0
           with:
             credentials_json: ${{ secrets.FIREBASE_TOKEN }}
-        
+          
         - name: Install Firebase CLI
           run: npm install -g firebase-tools
-    
+      
         - name: Deploy to Firebase Test Lab
           run: |
             flutter build apk
