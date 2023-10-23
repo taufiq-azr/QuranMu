@@ -46,7 +46,7 @@ jobs:
         - name: Authenticate with Firebase
           uses: google-github-actions/auth@v0
           with:
-            project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+            credentials_json: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
         
         - name: Install Firebase CLI
           run: npm install -g firebase-tools
