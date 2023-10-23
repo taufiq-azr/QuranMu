@@ -39,8 +39,8 @@ class DoaController extends GetxController {
         Get.offAllNamed(Routes.DOA);
         break;
       case 2:
-        // Navigasi ke halaman Listening
-        Get.offAllNamed(Routes.COMPASS);
+        // Navigasi ke halaman Doa
+        Get.offAllNamed(Routes.LAST_READ);
         break;
       default:
         // Tindakan default jika indeks tidak sesuai

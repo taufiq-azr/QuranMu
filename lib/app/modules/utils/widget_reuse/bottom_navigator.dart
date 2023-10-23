@@ -12,6 +12,10 @@ BottomNavigationBar buildBottomNavigationBar(
         icon: ImageIcon(AssetImage('lib/assets/doa_icon.png')),
         label: 'Doa',
       ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.bookmark), // Menambahkan widget Icon di sini
+        label: 'Bookmark',
+      ),
     ],
     currentIndex: selectedIndex,
     onTap: onItemTapped,

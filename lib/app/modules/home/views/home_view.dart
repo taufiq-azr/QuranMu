@@ -22,9 +22,140 @@ class HomeView extends GetView<HomeController> {
         child: Center(
           child: Column(
             children: [
-              Image.asset(
-                'lib/assets/logo_home.png',
-              ),
+              Padding(
+                  padding: EdgeInsets.all(15.0).w,
+                  child: GetBuilder<HomeController>(
+                    builder: (c) => FutureBuilder<Map<String, dynamic>?>(
+                      future: c.getLastRead(),
+                      builder: (context, snapshot) {
+                        Map<String, dynamic>? lastRead = snapshot.data;
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.r),
+                            gradient: LinearGradient(
+                              colors: [
+                                HexColor("87d1a4"),
+                                HexColor("006754"),
+                              ],
+                            ),
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onLongPress: () {
+                                if (lastRead != null) {
+                                  Get.defaultDialog(
+                                      title: "Delete Last Read",
+                                      middleText:
+                                          "Apakah kamu yakin ingin menghapus Last Read Bookmark ini ?",
+                                      actions: [
+                                        OutlinedButton(
+                                            onPressed: () => Get.back(),
+                                            child: Text("Cancel")),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            c.deleteLastRead(lastRead['id']);
+                                          },
+                                          child: Text("Delete"),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors
+                                                .red, // Mengatur warna latar belakang tombol
+                                            onPrimary: Colors
+                                                .white, // Mengatur warna teks
+                                          ),
+                                        ),
+                                      ]);
+                                }
+                              },
+                              onTap: () {
+                                if (lastRead != null) {
+                                  print(lastRead);
+                                     Get.toNamed(Routes.DETAIL_SURAH, arguments: {
+                                    "name": lastRead["surah"]
+                                        .toString()
+                                        .replaceAll("*", "'"),
+                                    "number": lastRead["number_surah"],
+                                    "index_ayat": lastRead["index_ayat"],
+                                  });
+                                }
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(15).w,
+                                height: 150.h,
+                                width: Get.width.w,
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      bottom: -60,
+                                      right: -50,
+                                      child: Opacity(
+                                        opacity: 0.7,
+                                        child: SizedBox(
+                                          width: 200.w,
+                                          height: 200.h,
+                                          child: Image.asset(
+                                            "lib/assets/svgs/quran_logos.png",
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.menu_book_rounded,
+                                              color: HexColor("#004B40"),
+                                            ),
+                                            SizedBox(
+                                              width: 10.w,
+                                            ),
+                                            Text(
+                                              "Terakhir dibaca",
+                                              style: TextStyle(
+                                                fontSize: 18.sp,
+                                                color: HexColor("#004B40"),
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 15.h,
+                                        ),
+                                        if (lastRead != null)
+                                          Text(
+                                            "${lastRead['surah'].replaceAll("*", "'")}",
+                                            style: TextStyle(
+                                              color: HexColor("#004B40"),
+                                              fontSize: 20.sp,
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          ),
+                                        Text(
+                                          lastRead == null
+                                              ? "Belum ada data"
+                                              : "Ayat ${lastRead['ayat']}",
+                                          style: TextStyle(
+                                            fontSize: 18.sp,
+                                            color: HexColor("#004B40"),
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -42,8 +173,13 @@ class HomeView extends GetView<HomeController> {
                 future: controller.getAllSurah(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Column(
+                        children: [
+                          SizedBox(height: 140.h),
+                          const CircularProgressIndicator(),
+                        ],
+                      ),
                     );
                   } else if (snapshot.hasError) {
                     return Center(
@@ -52,7 +188,6 @@ class HomeView extends GetView<HomeController> {
                   } else {
                     if (snapshot.data!.isEmpty) {
                       return Center(
-                        
                         child: Text(
                           "Tidak ada koneksi internet",
                           style: TextStyle(
@@ -70,8 +205,10 @@ class HomeView extends GetView<HomeController> {
                             Surah surah = snapshot.data![index];
                             return ListTile(
                               onTap: () {
-                                Get.toNamed(Routes.DETAIL_SURAH,
-                                    arguments: surah);
+                                Get.toNamed(Routes.DETAIL_SURAH, arguments: {
+                                  "name": surah.name!.transliteration!.id,
+                                  "number": surah.number,
+                                });
                               },
                               leading: Container(
                                 height: 60.h,

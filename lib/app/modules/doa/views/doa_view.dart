@@ -22,8 +22,89 @@ class DoaView extends GetView<DoaController> {
         child: Center(
           child: Column(
             children: [
-              Image.asset(
-                'lib/assets/logo_home.png',
+              Padding(
+                padding: EdgeInsets.all(15.0).w,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.r),
+                    gradient: LinearGradient(
+                      colors: [
+                        HexColor("87d1a4"),
+                        HexColor("006754"),
+                      ],
+                    ),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed(Routes.LAST_READ);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(15).w,
+                        height: 150.h,
+                        width: Get.width.w,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              bottom: -60,
+                              right: -50,
+                              child: Opacity(
+                                opacity: 0.7,
+                                child: SizedBox(
+                                  width: 200.w,
+                                  height: 200.h,
+                                  child: Image.asset(
+                                    "lib/assets/svgs/quran_logos.png",
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Terkadang,",
+                                  style: TextStyle(
+                                    color: HexColor("#004B40"),
+                                    fontSize: 20.sp,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "yang dibutuhkan hanyalah",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    color: HexColor("#004B40"),
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                                Text(
+                                  "satu doa untuk mengubah",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    color: HexColor("#004B40"),
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                                Text(
+                                  "segalanya.",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    color: HexColor("#004B40"),
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -42,8 +123,13 @@ class DoaView extends GetView<DoaController> {
                 future: controller.getAllDoa(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Column(
+                        children: [
+                          SizedBox(height: 140.h),
+                          const CircularProgressIndicator(),
+                        ],
+                      ),
                     );
                   } else if (snapshot.hasError) {
                     return Center(

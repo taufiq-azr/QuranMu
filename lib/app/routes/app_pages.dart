@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-
 import '../modules/detailDoa/bindings/detail_doa_binding.dart';
 import '../modules/detailDoa/views/detail_doa_view.dart';
 import '../modules/detail_surah/bindings/detail_surah_binding.dart';
@@ -9,6 +8,8 @@ import '../modules/doa/bindings/doa_binding.dart';
 import '../modules/doa/views/doa_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/last_read/bindings/last_read_binding.dart';
+import '../modules/last_read/views/last_read_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -47,6 +48,11 @@ class AppPages {
       page: () => DetailDoaView(),
       binding: DetailDoaBinding(),
     ),
-    
+    GetPage(
+      name: _Paths.LAST_READ,
+      page: () =>  LastReadView(),
+      binding: LastReadBinding(),
+    ),
+  
   ];
 }

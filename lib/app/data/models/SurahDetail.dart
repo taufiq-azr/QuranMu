@@ -32,9 +32,13 @@ class SurahDetail {
         number: json?["number"],
         sequence: json?["sequence"],
         numberOfVerses: json?["numberOfVerses"],
-        name: json?["name"] == null ? null :Name.fromJson(json?["name"]),
-        revelation:json?["revelation"] == null ? null : Revelation.fromJson(json?["revelation"]),
-        tafsir: json?["tafsir"] == null ? null : SurahDetailTafsir.fromJson(json?["tafsir"]),
+        name: json?["name"] == null ? null : Name.fromJson(json?["name"]),
+        revelation: json?["revelation"] == null
+            ? null
+            : Revelation.fromJson(json?["revelation"]),
+        tafsir: json?["tafsir"] == null
+            ? null
+            : SurahDetailTafsir.fromJson(json?["tafsir"]),
         preBismillah: json?["preBismillah"] == null
             ? null
             : PreBismillah.fromJson(json?["preBismillah"]!),
@@ -231,8 +235,10 @@ class Verse {
     required this.translation,
     required this.audio,
     required this.tafsir,
+    this.kondisiAudio = "stop",
   });
 
+  String kondisiAudio;
   Number? number;
   Meta? meta;
   Text? text;
@@ -256,6 +262,7 @@ class Verse {
         "translation": translation?.toJson(),
         "audio": audio?.toJson(),
         "tafsir": tafsir?.toJson(),
+        "kondisiAudio": kondisiAudio,
       };
 }
 
