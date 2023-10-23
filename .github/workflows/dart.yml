@@ -39,6 +39,10 @@ jobs:
       steps:
         - name: Checkout code
           uses: actions/checkout@v3
+
+        - name: Install Flutter SDK
+          uses: actions/setup-flutter-sdk@v1
+
         - name: Set up Google Cloud SDK
           uses: google-github-actions/setup-gcloud@v0
           with:
