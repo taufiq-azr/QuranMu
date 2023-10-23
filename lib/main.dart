@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(ScreenUtilInit(
     designSize: const Size(360, 690),
     minTextAdapt: true,

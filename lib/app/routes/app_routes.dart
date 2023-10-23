@@ -10,6 +10,8 @@ abstract class Routes {
   static const LISTENING = _Paths.LISTENING;
   static const DETAIL_DOA = _Paths.DETAIL_DOA;
   static const COMPASS = _Paths.COMPASS;
+  static const LAST_READ = _Paths.LAST_READ;
+  static const JUZ = _Paths.JUZ;
 }
 
 abstract class _Paths {
@@ -21,4 +23,6 @@ abstract class _Paths {
   static const LISTENING = '/listening';
   static const DETAIL_DOA = '/detail-doa';
   static const COMPASS = '/compass';
+  static const LAST_READ = '/last-read';
+  static const JUZ = '/juz';
 }
