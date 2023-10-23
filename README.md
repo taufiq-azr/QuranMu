@@ -1,8 +1,7 @@
 
 # Qur'anku App
 
-The Qur'anku App is a software designed to facilitate users in reading, memorizing, and studying the Quran, the holy book of Islam. This application is available on mobile android platforms such as smartphones 
- 
+
 
 ## Installation
 
