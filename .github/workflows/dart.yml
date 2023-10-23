@@ -58,7 +58,8 @@ jobs:
             with: 
               flutter-version: "3.10.3"
               channel: 'stable'
-        
+          - name: Install dependencies
+            run: flutter pub get
           - name: Deploy to Firebase Test Lab
             run: |
               flutter build apk
