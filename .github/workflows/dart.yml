@@ -37,23 +37,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to Staging
-        if: github.event_name == 'push' && github.ref == 'refs/heads/development'
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+          service_account_key: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
+  
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+  
+      - name: Authenticate with Firebase
+        run: firebase login:ci --token "${{ secrets.FIREBASE_API_KEY }}"
+  
+      - name: Deploy to Firebase Test Lab
         run: |
-          # Add the following dependencies:
-          - name: Google Cloud SDK
-            uses: google-github-actions/setup-gcloud@v0
-            with:
-              project_id: ${{ secrets.FIREBASE_API_KEY }}
-              service_account_key: ${{ secrets.FIREBASE_API_KEY }}
-          - name: Firebase Admin SDK
-            run: npm install -g firebase-admin
-
-          # Build the APK
           flutter build apk
-
-          # Upload the APK to Firebase Test Lab for testing
-          gcloud auth activate-service-account --key-file=${{ secrets.FIREBASE_API_KEY }}
           gcloud firebase test android run \
             --type instrumentation \
             --app build/app/outputs/flutter-apk/app-release.apk \
