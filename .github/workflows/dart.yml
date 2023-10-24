@@ -64,10 +64,13 @@ jobs:
             run: |
               flutter build apk
               gcloud firebase test android run \
-                --type instrumentation \
-                --app build/app/outputs/flutter-apk/app-release.apk \
-                --test build/app/outputs/flutter-apk/app-release.apk \
-                --timeout 5m
+                --type robo \
+                --app app-debug-unaligned.apk \
+                --device model=Nexus6,version=21,locale=en,orientation=portrait  \
+                --timeout 90s \
+                --client-details matrixLabel="Example matrix label"
+
+apa maksud hal ini ?
 
   deploy_production:
     runs-on: ubuntu-latest
