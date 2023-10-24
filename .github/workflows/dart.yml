@@ -63,7 +63,7 @@ jobs:
           gcloud firebase test android run \
             --type robo \
             --app build/app/outputs/flutter-apk/app-release.apk \
-            --device model=Nexus6,version=21,locale=en,orientation=portrait  \
+            --device model=Pixel5,version=30,locale=en,orientation=portrait  \
             --timeout 90s \
             --client-details matrixLabel="Example matrix label"
 
