@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <instrumentation
+        android:name="com.azharproject.quran.MyTestRunner"
+        android:targetPackage="com.azharproject.quran" />
    <application
         android:label="quran"
         android:name="${applicationName}"
@@ -36,8 +39,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <instrumentation
-            android:name="com.azharproject.quran.MyTestRunner"
-            android:targetPackage="com.azharproject.quran" />
     </application>
 </manifest>
