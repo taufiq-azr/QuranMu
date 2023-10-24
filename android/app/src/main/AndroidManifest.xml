@@ -36,5 +36,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <instrumentation
+            android:name="com.azharproject.quran.MyTestRunner"
+            android:targetPackage="com.azharproject.quran" />
     </application>
 </manifest>
