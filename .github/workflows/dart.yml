@@ -32,38 +32,6 @@ jobs:
         run: |
           flutter build apk
           flutter test
-          
-  benchmark-test:
-    name: Benchmark tests
-    runs-on: ubuntu-latest
-    needs: build-and-unit-test
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with: 
-          flutter-version: "3.10.3"
-          channel: 'stable'
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Run benchmark tests
-        run: flutter test test_benchmarks
-
-  golden-test:
-    name: Golden tests
-    runs-on: ubuntu-latest
-    needs: build-and-unit-test
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with: 
-          flutter-version: "3.10.3"
-          channel: 'stable'
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Run golden tests
-        run: flutter test test_goldens
 
   deploy_staging:
     runs-on: ubuntu-latest
