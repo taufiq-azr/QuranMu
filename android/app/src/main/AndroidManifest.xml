@@ -9,9 +9,9 @@
         android:name="com.azharproject.quran.MyTestRunner"
         android:targetPackage="com.azharproject.quran" />
    <application
-        android:label="quran"
+        android:label="QuranMu"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

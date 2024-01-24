@@ -132,8 +132,8 @@ class DoaView extends GetView<DoaController> {
                       ),
                     );
                   } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text("Failed to load data: ${snapshot.error}"),
+                    return const Center(
+                      child: Text("Tidak ada koneksi internet"),
                     );
                   } else {
                     if (snapshot.data!.isEmpty) {
