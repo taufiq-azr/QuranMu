@@ -71,18 +71,4 @@ jobs:
             --timeout 90s \
             --client-details matrixLabel="Testing matrix label"
 
-  deploy_production:
-    runs-on: ubuntu-latest
-    needs: build-and-unit-test
-    steps:
-      - name: Deploy to Production
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          # Install Fastlane
-          bundle install
-          # Authenticate with Google Play
-          fastlane supply init --json_key @/path/to/your/google-play-key.json --package_name com.azharproject.quran
-          # Upload the APK to Play Store
-          fastlane supply --track beta --skip_upload_metadata --skip_upload_images
-          # Deploy
-          fastlane deploy
+  
