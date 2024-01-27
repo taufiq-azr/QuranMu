@@ -67,7 +67,7 @@ jobs:
             --device model=cactus,version=27,locale=en,orientation=portrait  \
             --device model=gts3lltevzw,version=28,locale=en,orientation=portrait  \
             --device model=x1q,version=29,locale=en,orientation=portrait  \
-            --device model=vivo_1906,version=29,locale=en,orientation=portrait  \
+            --device model=redfin,version=30,locale=en,orientation=portrait  \
             --timeout 90s \
             --client-details matrixLabel="Testing matrix label"
 
