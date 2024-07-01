@@ -8,7 +8,6 @@ name: Dart
 on:
   push:
     branches:
-      - master
       - development
   pull_request:
     branches:
@@ -16,6 +15,7 @@ on:
 
 jobs:
   build-and-unit-test:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +34,7 @@ jobs:
           flutter test
 
   deploy_staging:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs: build-and-unit-test
     steps:
@@ -70,5 +71,3 @@ jobs:
             --device model=redfin,version=30,locale=en,orientation=portrait  \
             --timeout 90s \
             --client-details matrixLabel="Testing matrix label"
-
-  
