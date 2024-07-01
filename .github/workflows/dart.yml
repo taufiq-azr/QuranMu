@@ -15,9 +15,8 @@ on:
 
 jobs:
   build-and-unit-test:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
-
+    if: github.event_name == 'push' && github.ref == 'refs/heads/development'
     steps:
       - uses: actions/checkout@v3
 
@@ -34,8 +33,8 @@ jobs:
           flutter test
 
   deploy_staging:
-    if: github.event_name == 'pull_request' && github.base_ref == 'master' && github.head_ref == 'dev'
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'development' && github.event.pull_request.base.ref == 'master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -70,4 +69,3 @@ jobs:
             --device model=redfin,version=30,locale=en,orientation=portrait  \
             --timeout 90s \
             --client-details matrixLabel="Testing matrix label"
-
