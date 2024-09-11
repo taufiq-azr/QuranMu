@@ -23,9 +23,9 @@ API Used:
     
 ## Screenshots
 
-![App Screenshot](screenshots/ss1.jpg)
+![App Screenshot](screenshots/ss1.png)
 ##
-![App Screenshot](screenshots/ss2.jpg)
+![App Screenshot](screenshots/ss2.png)
 
 
 
